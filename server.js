@@ -20,10 +20,11 @@ app.get("/", (req, res) => {
                 .valid { background: #d4edda; color: #155724; }
                 .invalid { background: #f8d7da; color: #721c24; }
                 .typo { background: #fff3cd; color: #856404; }
+                .note { background: #e8f4fd; border-left: 4px solid #0070f3; padding: 12px 16px; border-radius: 4px; font-size: 14px; color: #333; margin-top: 10px; }
             </style>
         </head>
         <body>
-            <h1>📧 Email Verification API</h1>
+            <h1>Email Verification API</h1>
             <div class="card">
                 <h3>Usage</h3>
                 <p>GET /verify-email?email=your@email.com</p>
@@ -39,6 +40,9 @@ app.get("/", (req, res) => {
                 <a href="${baseUrl}/verify-email?email=test@gmial.com">
                     <span class="badge typo">TYPO</span> test@gmial.com → gmail.com
                 </a>
+                <div class="note">
+                    <strong>Note:</strong> SMTP verification via port 25 is blocked on free cloud hosting platforms (Railway, Render, Vercel) by default to prevent spam abuse. As a result, mailbox-level verification (RCPT TO) returns "unknown" on this live deployment. This feature works correctly in a local environment. In production, this would be resolved using a dedicated IP with port 25 whitelisted.
+                </div>
             </div>
         </body>
         </html>
