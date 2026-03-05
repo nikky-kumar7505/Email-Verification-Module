@@ -4,10 +4,11 @@ const { verifyEmail } = require("./src/verifyEmail");
 const app = express();
 
 app.get("/", (req, res) => {
+    const baseUrl = `${req.protocol}://${req.get("host")}`;
     res.json({
         message: "Email Verification API is running",
         usage: "Use /verify-email endpoint with email query parameter",
-        example: "http://localhost:3000/verify-email?email=test@gamil.com"
+        example: `${baseUrl}/verify-email?email=test@gamil.com`
     });
 });
 
